@@ -1,8 +1,17 @@
 import {ComponentPropsWithoutRef, useState, ChangeEvent, FormEvent} from 'react';
 import {css} from '../styled-system/css'
-import { center } from '../styled-system/patterns';
+
+/**
+* Input Props
+*/
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
+  /**
+   * label Label for the input
+   */
   label: string;
+  /**
+   * onCreate Handler to be invoked when a todo is created.
+   */
   onCreate: (newValue: string) => void;
 };
 
@@ -25,6 +34,12 @@ const inputStyle = {
   }
 }
 
+/**
+ * A Form with a label and input.
+ * @param props Input component props.
+ * @component
+ * @returns A Form component with Input and Label.
+ */
 export default function Input(props: InputProps) {
   const {id, label, value: initialValue = '', onCreate} = props;
   const [value, setValue] = useState(initialValue);
