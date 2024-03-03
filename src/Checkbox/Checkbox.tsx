@@ -36,6 +36,10 @@ export interface ICheckboxProps {
    * @default 'primary'
    */
   color?: 'primary' | 'info' | 'warning' | 'danger';
+  
+  /** children Children */
+  children?: ReactNode;
+
 }
 
 /**
@@ -52,6 +56,7 @@ export default function Checkbox(props: ICheckboxProps): ReactNode {
     size = 'md',
     variant = 'surface',
     color = 'primary',
+    children = null,
   } = props;
   const [checked, setChecked] = useState(defaultChecked);
 
@@ -78,6 +83,7 @@ export default function Checkbox(props: ICheckboxProps): ReactNode {
         checked={checked}
       />
       {label}
+      {children}
     </Label>
   );
 }
