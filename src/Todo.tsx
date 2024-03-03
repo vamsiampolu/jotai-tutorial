@@ -17,11 +17,11 @@ export interface ITodoItem {
   /**
    * onDelete Invoked when the todo is deleted.
    */
-   onDelete: (deleted: ITodoItem) => void;
+  onDelete: (deleted: ITodoItem) => void;
   /**
    * updateTodoStatus Update the completed status of a todo.
    */
-   updateTodoStatus: (todo: ITodoItem) => void;
+  updateTodoStatus: (todo: ITodoItem) => void;
 }
 
 /**
@@ -32,9 +32,16 @@ export interface ITodoItem {
  */
 export default function Todo(props: ITodoItem): ReactNode {
   const toggleCompleted = (checked: boolean) => {
-    return props.updateTodoStatus({ title: props.title, completed: checked } as ITodoItem);   
+    return props.updateTodoStatus({
+      title: props.title,
+      completed: checked,
+    } as ITodoItem);
   };
-  const onDeleteClick = () => props.onDelete({ title: props.title, completed: props.completed} as ITodoItem);
+  const onDeleteClick = () =>
+    props.onDelete({
+      title: props.title,
+      completed: props.completed,
+    } as ITodoItem);
   return (
     <div data-testid='todo'>
       <Checkbox
@@ -42,7 +49,7 @@ export default function Todo(props: ITodoItem): ReactNode {
         defaultChecked={props.completed}
         onChange={toggleCompleted}
       >
-      <Trash onClick={onDeleteClick} />
+        <Trash onClick={onDeleteClick} />
       </Checkbox>
     </div>
   );

@@ -1,4 +1,4 @@
-import {Meta, StoryObj} from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import TodoList from './TodoList';
 import { atomsForStorybook } from '@alexgorbatchev/storybook-addon-jotai';
 import { todosAtom, filterAtom } from './atoms/todos';
@@ -19,9 +19,9 @@ export const Basic: StoryObj<typeof TodoList> = {
         filterAtom,
       },
       values: {
-       todos: [],
-       filterAtom: 'all',
-      }
-    })
-  }
+        todos: [],
+        filterAtom: 'all',
+      },
+    }),
+  },
 };

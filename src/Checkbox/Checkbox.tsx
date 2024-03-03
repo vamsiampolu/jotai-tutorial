@@ -36,10 +36,9 @@ export interface ICheckboxProps {
    * @default 'primary'
    */
   color?: 'primary' | 'info' | 'warning' | 'danger';
-  
+
   /** children Children */
   children?: ReactNode;
-
 }
 
 /**

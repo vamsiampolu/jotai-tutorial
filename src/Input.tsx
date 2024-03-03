@@ -1,9 +1,14 @@
-import {ComponentPropsWithoutRef, useState, ChangeEvent, FormEvent} from 'react';
-import {css} from '../styled-system/css'
+import {
+  ComponentPropsWithoutRef,
+  useState,
+  ChangeEvent,
+  FormEvent,
+} from 'react';
+import { css } from '../styled-system/css';
 
 /**
-* Input Props
-*/
+ * Input Props
+ */
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
   /**
    * label Label for the input
@@ -30,9 +35,10 @@ const inputStyle = {
   _focus: {
     outline: 'none',
     borderColor: 'indigo.500',
-    boxShadow: 'white 0px 0px 0px 0px, indigo.500/50 0px 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px',  
-  }
-}
+    boxShadow:
+      'white 0px 0px 0px 0px, indigo.500/50 0px 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px',
+  },
+};
 
 /**
  * A Form with a label and input.
@@ -41,7 +47,7 @@ const inputStyle = {
  * @returns A Form component with Input and Label.
  */
 export default function Input(props: InputProps) {
-  const {id, label, value: initialValue = '', onCreate} = props;
+  const { id, label, value: initialValue = '', onCreate } = props;
   const [value, setValue] = useState(initialValue);
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -49,12 +55,36 @@ export default function Input(props: InputProps) {
   };
 
   const onSubmit = (e: FormEvent) => {
-     e.preventDefault();
+    e.preventDefault();
     onCreate(value as string);
   };
 
-  return <form data-testid="input-form" className={css({ display: 'flex', flexDirection: 'row', gap: '1rem', alignItems: 'center'})} onSubmit={onSubmit}>
-    <label data-testid="form-input-label" className={css({display: 'block'})} htmlFor={id}>{label}</label>
-    <input data-testid="form-input" className={`${css(inputStyle)} create-todo`} type="text" id={id} value={value} onChange={onChange} />
+  return (
+    <form
+      data-testid='input-form'
+      className={css({
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '1rem',
+        alignItems: 'center',
+      })}
+      onSubmit={onSubmit}
+    >
+      <label
+        data-testid='form-input-label'
+        className={css({ display: 'block' })}
+        htmlFor={id}
+      >
+        {label}
+      </label>
+      <input
+        data-testid='form-input'
+        className={`${css(inputStyle)} create-todo`}
+        type='text'
+        id={id}
+        value={value}
+        onChange={onChange}
+      />
     </form>
+  );
 }

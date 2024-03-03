@@ -1,6 +1,6 @@
 import Input from './Input';
-import {Meta, StoryObj} from '@storybook/react';
-import {fn, within, userEvent, expect} from '@storybook/test';
+import { Meta, StoryObj } from '@storybook/react';
+import { fn, within, userEvent, expect } from '@storybook/test';
 
 const meta: Meta<typeof Input> = {
   title: 'components/Input',
@@ -8,12 +8,12 @@ const meta: Meta<typeof Input> = {
   tags: ['autodocs'],
   parameters: {
     args: {
-      exclude: ['onCreate']
-    }
+      exclude: ['onCreate'],
+    },
   },
   args: {
-    onCreate: fn()
-  }
+    onCreate: fn(),
+  },
 };
 
 export default meta;
@@ -21,17 +21,17 @@ export default meta;
 export const Basic: StoryObj<typeof Input> = {
   args: {
     label: 'Create a Todo',
-  }
-}
+  },
+};
 
 export const CreateTodo: StoryObj<typeof Input> = {
   args: {
-    label: 'Create a Todo'
+    label: 'Create a Todo',
   },
-  play: async ({ canvasElement, args}) => {
+  play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
     const input = await canvas.findByTestId('form-input');
     await userEvent.type(input, 'Fly a kite{enter}');
     expect(args.onCreate).toHaveBeenCalled();
-  }
+  },
 };

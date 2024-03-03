@@ -92,7 +92,7 @@ export default function CheckedIcon(props: ICheckedIconProps): ReactNode {
       data-testid='checkbox-icon-wrapper'
       className={`${wrapperCx} checkbox-icon-wrapper`}
     >
-      <Icon data-testid="checkbox-icon" className={cx} {...softIconProps} />
+      <Icon data-testid='checkbox-icon' className={cx} {...softIconProps} />
     </span>
   );
 }
